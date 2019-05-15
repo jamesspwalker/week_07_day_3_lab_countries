@@ -10,7 +10,8 @@ SelectView.prototype.bindEvents = function () {
     this.populate(allCountries);
   });
   this.element.addEventListener('change', (evt) => {
-    console.log(evt);
+    const chosenCountry = evt.target.value
+  PubSub.publish('SelectView:country-choice', chosenCountry)
   });
 };
 

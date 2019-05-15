@@ -7,7 +7,8 @@ const Countries = function () {
 
 Countries.prototype.bindEvents = function () {
   PubSub.subscribe('SelectView:country-choice', (evt) => {
-
+    const countryChoice = evt.detail
+    this.publishCountryDetail(countryChoice);
   })
 };
 
@@ -18,5 +19,11 @@ Countries.prototype.getData = function () {
     PubSub.publish('Countries:countries-loaded', this.countries)
   })
 };
+
+Countries.prototype.publishCountryDetail = function (countryChoice) {
+  const selectedCountry = this.countries[countryChoice];
+  PubSub.publish('Countries:selected-country', selectedCountry)
+}
+
 
 module.exports = Countries;
