@@ -5,7 +5,8 @@ const Countries = require('./models/countries.js')
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded');
 
-  const displayView = new DisplayView();
+  const showCountryDetails = document.querySelector('div#country');
+  const displayView = new DisplayView(showCountryDetails);
   displayView.bindEvents();
 
   const dropDownMenu = document.querySelector('select#countries');
